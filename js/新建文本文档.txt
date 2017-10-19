@@ -1,0 +1,39 @@
+/*
+* @Author: l
+* @Date:   2017-10-10 22:38:03
+* @Last Modified by:   l
+* @Last Modified time: 2017-10-10 23:06:05
+*/
+let lb = document.querySelectorAll(".lunbodisn1");
+let imgs = document.querySelectorAll(".imgbox");
+lb.forEach(function(val,index){
+	val.onclick=function(){
+		for(let i=0;i<lb.length;i++){
+			lb[i].classList.remove("active");
+			imgs[i].classList.remove("active");
+		}
+		val.classList.add("active");
+		imgs[index].classList.add("active");
+	}
+})
+let now = 0;
+let st=setInterval(fn,1000)
+function fn(){
+	now++;
+	if (now===lb.length) {
+		now=0;
+	}
+	for(let i=0;i<lb.length;i++){
+			lb[i].classList.remove("active");
+			imgs[i].classList.remove("active");
+		}
+		lb[now].classList.add("active");
+		imgs[now].classList.add("active");
+}
+let bann = document.querySelector(".banner-neikuan");
+bann.onmouseover=function(){
+	clearInterval(st);
+}
+bann.onmouseout=function(){
+	st=setInterval(fn,1000)
+}
